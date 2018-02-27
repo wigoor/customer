@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="customer-wrapper">
+<p class="customer-id">ID: </p>
+<p class="customer-firstname">Förnamn: </p>
+<p class="customer-lastname">Efternamn: </p>
+<p class="customer-occupation">Yrke: </p>
+</div>
+<script>
+$(function() {
+	$.ajax({url:"http://localhost:80/customer/customer/read.php"
+	}).then(function(data) {
+		var id = data["records"][0]["id"];
+		var name = data["records"][0]["name"];
+		var lastname = data["records"][0]["lastname"];
+		var occupation = data["records"][0]["occupation"];
+		
+		$('.customer-id').append(id);
+		$('.customer-firstname').append(name);
+		$('.customer-lastname').append(lastname);
+		$('.customer-occupation').append(occupation);
+	});
+});
+</script>
+</body>
+</html>
