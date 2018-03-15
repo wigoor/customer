@@ -14,12 +14,15 @@
 </div>
 <script>
 $(function() {
-	$.ajax({url:"http://localhost:80/customer/customer/read.php"
+	$.ajax({url:"http://localhost:8080/customer/customer/read.php"
 	}).then(function(data) {
-		var id = data["records"][0]["id"];
-		var name = data["records"][0]["name"];
-		var lastname = data["records"][0]["lastname"];
-		var occupation = data["records"][0]["occupation"];
+		
+		var id_n = Math.floor((Math.random() * 4));
+	
+		var id = data["records"][id_n]["id"];
+		var name = data["records"][id_n]["name"];
+		var lastname = data["records"][id_n]["lastname"];
+		var occupation = data["records"][id_n]["occupation"];
 		
 		$('.customer-id').append(id);
 		$('.customer-firstname').append(name);
